@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+sample-*.ics
+WSA_Lower_School_Lunch_*.ics
+fixtures/
