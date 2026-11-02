@@ -32,6 +32,7 @@ Usage
     python3 wsa_lunch_sync.py --dry-run                     # what would change
     python3 wsa_lunch_sync.py                               # write rolling feed
     python3 wsa_lunch_sync.py --days 10 --back-days 2       # wider window + history
+    python3 wsa_lunch_sync.py --months 2                    # whole current month + next month
     python3 wsa_lunch_sync.py --gist create                 # also publish to a gist
     python3 wsa_lunch_sync.py --gcal --calendar-id primary --prune
     python3 wsa_lunch_sync.py --fixture fixtures/ --start 2026-11-02 --days 7
@@ -514,10 +515,28 @@ def window(today=None, horizon=HORIZON_DAYS, back=BACK_DAYS):
             today + _dt.timedelta(days=max(horizon, 1) - 1))
 
 
+def month_window(today=None, months=2):
+    """Whole calendar months, anchored on the current one.
+
+    Run on Nov 1 with months=2 -> Nov 1 .. Dec 31. Unlike the rolling day
+    window, this keeps the *entire* current month visible until the month
+    turns, and always shows everything FLIK has published for next month.
+    """
+    today = today or _dt.date.today()
+    months = max(months, 1)
+    y, m = today.year, today.month + months - 1
+    while m > 12:
+        m -= 12
+        y += 1
+    nxt = _dt.date(y + 1, 1, 1) if m == 12 else _dt.date(y, m + 1, 1)
+    return today.replace(day=1), nxt - _dt.timedelta(days=1)
+
+
 def build_events(args, state):
     today = _dt.date.today()
-    start = _dt.date.fromisoformat(args.start) if args.start else window(today, args.days, args.back_days)[0]
-    end = _dt.date.fromisoformat(args.end) if args.end else window(today, args.days, args.back_days)[1]
+    win = month_window(today, args.months) if args.months else window(today, args.days, args.back_days)
+    start = _dt.date.fromisoformat(args.start) if args.start else win[0]
+    end = _dt.date.fromisoformat(args.end) if args.end else win[1]
     print(f"Window {start} .. {end}  ({'Mon-Fri only' if WEEKDAY_ONLY else 'all days'}, "
           f"{'all-day / no reminder' if ALL_DAY else 'timed'}, lunch only)")
     stats = {"ok": 0, "failed": 0}
@@ -541,6 +560,9 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="Keep a rolling WSA lunch calendar in sync.")
     ap.add_argument("--days", type=int, default=HORIZON_DAYS,
                     help="days to publish AHEAD, counting today (default %(default)s)")
+    ap.add_argument("--months", type=int, default=None, metavar="N",
+                    help="whole calendar months starting with the current one (2 = this + next); "
+                         "overrides --days/--back-days")
     ap.add_argument("--back-days", type=int, default=BACK_DAYS, dest="back_days",
                     help="also keep N past days in the output (default %(default)s)")
     ap.add_argument("--start", default=None, help="override window start YYYY-MM-DD")
@@ -658,6 +680,10 @@ def self_test():
     today = _dt.date(2026, 11, 2)                      # a Monday
     start, end = window(today)
     check("default window is exactly one week", (end - start).days == 6)
+    check("--months 2 covers the current + next month",
+          month_window(_dt.date(2026, 11, 17), 2) == (_dt.date(2026, 11, 1), _dt.date(2026, 12, 31)))
+    check("month window rolls over the year",
+          month_window(_dt.date(2026, 12, 3), 2) == (_dt.date(2026, 12, 1), _dt.date(2027, 1, 31)))
     mondays = {monday_on_or_before(start + _dt.timedelta(days=i)) for i in range(7)}
     check("a 7-day window costs at most 2 API calls", len(mondays) <= 2)
     mid = {monday_on_or_before(_dt.date(2026, 11, 4) + _dt.timedelta(days=i)) for i in range(7)}
