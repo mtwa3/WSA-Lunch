@@ -23,7 +23,7 @@ jobs:
         run: python -m pip install --quiet --upgrade certifi
       - name: Build rolling feed (current month + next month)
         run: >
-          python wsa_lunch_sync.py --months 2 --include placeholders --back-days 7
+          python wsa_lunch_sync.py --months 2 --include placeholders
           --state .wsa-state.json --out wsa-lunch.ics
       - name: Sanity check
         run: |
