@@ -69,6 +69,9 @@ EVENT_DURATION_MIN = 60
 
 TITLE = "Lower School Lunch"
 LOCATION = ""
+# Timezone for the "Last checked" line shown in every calendar entry.
+# Any IANA name works, e.g. "America/Chicago"; falls back to UTC if unavailable.
+DISPLAY_TZ = "UTC"
 FEED_NAME = "WSA Lower School Lunch"
 OUT_DEFAULT = "wsa-lower-school-lunch.ics"
 STATE_DEFAULT = "~/.wsa_lunch_state.json"
@@ -121,6 +124,17 @@ def uid_for(day: _dt.date) -> str:
 def gcal_id_for(day: _dt.date) -> str:
     """Deterministic Google event id (5-1024 chars of [A-Za-z0-9._@~-])."""
     return f"wsalunch{day.strftime('%Y%m%d')}{SCHOOL[:3]}"
+
+
+def format_check_time(now=None) -> str:
+    """Human-readable 'when did we last pull this' stamp for the feed."""
+    now = now or _dt.datetime.now(_dt.timezone.utc)
+    try:
+        from zoneinfo import ZoneInfo
+        now = now.astimezone(ZoneInfo(DISPLAY_TZ))
+    except Exception:                                # noqa: BLE001 - no tzdata -> UTC
+        now = now.astimezone(_dt.timezone.utc)
+    return now.strftime("%Y-%m-%d %H:%M %Z")
 
 
 # ---------------------------------------------------------------------------
@@ -271,13 +285,22 @@ def has_content(day: dict) -> bool:
 # Day model + change detection
 # ---------------------------------------------------------------------------
 class DayEvent:
-    def __init__(self, date: _dt.date, description: str, published: bool):
+    def __init__(self, date: _dt.date, description: str, published: bool,
+                 checked_at: str = None):
         self.date = date
-        self.description = description
+        self.base_description = description
+        self.checked_at = checked_at
         self.published = published
         self.summary = f"{TITLE} - {date.strftime('%A')}"
+        # The "Last checked" line is deliberately NOT part of the content hash:
+        # the clock moves on every run, but a moved clock is not a menu change,
+        # so SEQUENCE/DTSTAMP stay stable while the visible timestamp refreshes.
+        if checked_at:
+            self.description = description + "\nLast checked " + checked_at
+        else:
+            self.description = description
         # Sort lines so a re-ordering upstream is not treated as a menu change.
-        payload = json.dumps([self.summary, sorted(description.splitlines())],
+        payload = json.dumps([self.summary, sorted(self.base_description.splitlines())],
                              ensure_ascii=False)
         self.content_hash = hashlib.sha256(payload.encode("utf-8")).hexdigest()[:16]
         self.sequence = 1
@@ -285,17 +308,21 @@ class DayEvent:
         self.stamp = _dt.datetime.now(_dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
-def to_events(days):
+def to_events(days, checked_at: str = None):
     events = []
     for day in days:
         d = _dt.date.fromisoformat(day["date"])
         body = render_description(parse_day(day))
         if not body:
-            body = ("Menu not yet published - check back closer to the date."
-                    if day.get("has_unpublished_menus") else "No menu listed for this day.")
+            # FLIK fills menus in gradually (~a week ahead): an empty day almost
+            # always means "not entered yet", not "there is no lunch". The
+            # "Last checked" line added by DayEvent tells how recent that is.
+            body = ("Menu not yet published"
+                    if not day.get("has_unpublished_menus")
+                    else "(Some stations unpublished)")
         elif day.get("has_unpublished_menus"):
             body = "(Some stations unpublished)\n" + body
-        events.append(DayEvent(d, body, has_content(day)))
+        events.append(DayEvent(d, body, has_content(day), checked_at))
     return events
 
 
@@ -532,7 +559,7 @@ def month_window(today=None, months=2):
     return today.replace(day=1), nxt - _dt.timedelta(days=1)
 
 
-def build_events(args, state):
+def build_events(args, state, checked_at: str = None):
     today = _dt.date.today()
     win = month_window(today, args.months) if args.months else window(today, args.days, args.back_days)
     start = _dt.date.fromisoformat(args.start) if args.start else win[0]
@@ -553,7 +580,7 @@ def build_events(args, state):
         days = [d for d in days if _dt.date.fromisoformat(d["date"]).weekday() < 5]
     if not args.include_placeholders:
         days = [d for d in days if has_content(d)]
-    return start, end, apply_state(to_events(days), state), stats
+    return start, end, apply_state(to_events(days, checked_at), state), stats
 
 
 def main(argv=None):
@@ -602,7 +629,8 @@ def main(argv=None):
         CA_BUNDLE = args.ca_bundle
 
     state = load_state(args.state)
-    start, end, events, stats = build_events(args, state)
+    checked_at = format_check_time()
+    start, end, events, stats = build_events(args, state, checked_at)
     if stats["failed"] and not events:
         return 1                       # total outage: fail loudly, write nothing
 
@@ -700,7 +728,9 @@ def self_test():
                     json.dump(_fake_week(anchor, mutate), f)
             days = collect_days(start, end, fdir)
             days = [d for d in days if _dt.date.fromisoformat(d["date"]).weekday() < 5]
-            evs = apply_state(to_events(days), load_state(state))
+            # Fixed clock so the "Last checked" line cannot break the
+            # byte-identical / no-change assertions below.
+            evs = apply_state(to_events(days, "2026-11-02 07:00 UTC"), load_state(state))
             return evs
 
         evs = run()
@@ -724,6 +754,16 @@ def self_test():
         check("SEQUENCE does not drift when nothing changed", [e.sequence for e in evs2] == [1] * 5)
         check("re-run is byte-identical (so CI commits stay quiet)",
               build_feed(evs2) == build_feed(run()))
+
+        # A moved "last checked" clock must NOT count as a menu change...
+        evs_clock = apply_state(to_events(
+            [d for d in collect_days(start, end, fdir)
+             if _dt.date.fromisoformat(d["date"]).weekday() < 5],
+            "2099-01-01 00:00 UTC"), load_state(state))
+        check("every entry carries a 'Last checked' line",
+              all(e.description.endswith("\nLast checked 2099-01-01 00:00 UTC") for e in evs_clock))
+        check("...and leaves SEQUENCE/status untouched",
+              all(e.status == "unchanged" for e in evs_clock) and [e.sequence for e in evs_clock] == [1] * 5)
 
         evs3 = run(mutate=("2026-11-04",))              # FLIK edits Wednesday
         wed = next(e for e in evs3 if e.date == _dt.date(2026, 11, 4))
