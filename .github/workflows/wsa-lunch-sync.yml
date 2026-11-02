@@ -1,12 +1,16 @@
 name: wsa-lunch-sync
 
+# Regenerates the rolling lunch feed and commits it; GitHub Pages serves it and
+# Google Calendar subscribes to that URL. No secrets required (GITHUB_TOKEN is
+# enough to write back into this same repo).
+
 on:
   schedule:
-    - cron: "0 12 * * *"      # 12:00 UTC daily (~07:00 Eastern)
-  workflow_dispatch: {}        # adds a "Run workflow" button
+    - cron: "0 12 * * *"      # 12:00 UTC daily (~07:00 Eastern; DST shifts it an hour)
+  workflow_dispatch: {}        # adds a "Run workflow" button for manual runs / re-enabling
 
 permissions:
-  contents: write              # lets the job commit back into this repo
+  contents: write              # commit wsa-lunch.ics + .wsa-state.json back to this repo
 
 concurrency:
   group: wsa-lunch-sync
@@ -14,22 +18,48 @@ concurrency:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    # Pinned (not ubuntu-latest): the label migrates to Ubuntu 26 on 2026-10-19.
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: { python-version: "3.12" }
-      - name: Install CA bundle (script auto-detects certifi)
+      # @v5 / @v6 are the Node 24 builds; v4/v5-of-each trigger the Node 20
+      # deprecation warning until bumped.
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      # If only the workflow file was updated (script still lacks --months),
+      # argparse would die with an opaque exit code 2. Fail loudly with a
+      # readable message instead.
+      - name: Check the script supports --months
+        run: |
+          if ! python wsa_lunch_sync.py --help | grep -q -- "--months"; then
+            echo "::error::wsa_lunch_sync.py in this checkout is an older version without --months. Commit the updated script alongside the workflow."
+            exit 1
+          fi
+
+      - name: Install CA bundle (harmless; script auto-detects certifi)
         run: python -m pip install --quiet --upgrade certifi
-      - name: Build rolling feed (current month + next month)
+
+      # Exits non-zero if every fetch fails, so the job goes red and nothing is
+      # committed - an empty feed can never silently wipe the calendar.
+      #
+      # --months 2 = whole current month + whole next month (recomputed daily,
+      # so the window slides forward on the first of each month).
+      # --include-placeholders keeps days FLIK has not published yet visible as
+      # "Menu not yet published"; drop that flag to show only real menus.
+      - name: Build feed (current month + next month)
         run: >
-          python wsa_lunch_sync.py --months 2 --include placeholders
+          python wsa_lunch_sync.py --months 2 --include-placeholders
           --state .wsa-state.json --out wsa-lunch.ics
-      - name: Sanity check
+
+      - name: Sanity check the output
         run: |
           test "$(grep -c 'BEGIN:VEVENT' wsa-lunch.ics)" -gt 0 || { echo "feed has no events"; exit 1; }
           head -3 wsa-lunch.ics
-      - name: Commit only when something changed
+
+      - name: Commit only when something actually changed
         run: |
           git config user.name  "wsa-lunch-sync"
           git config user.email "wsa-lunch-sync@users.noreply.github.com"
@@ -40,6 +70,9 @@ jobs:
             git commit -m "menu sync $(date -u +%Y-%m-%dT%H:%MZ)"
             git push
           fi
+
+      # github.event.repository is empty on schedule triggers, so derive the
+      # Pages URL from GITHUB_REPOSITORY (always "owner/repo").
       - name: Show the feed URL
         run: |
           REPO="WSA-Lunch"
