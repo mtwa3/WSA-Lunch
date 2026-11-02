@@ -42,5 +42,5 @@ jobs:
           fi
       - name: Show the feed URL
         run: |
-          REPO="${GITHUB_REPOSITORY#*/}"
-          echo "Subscribe: https://mtwa3.github.io/WSA-lunch/wsa-lunch.ics"
+          REPO="WSA-Lunch"
+          echo "Subscribe: https://mtwa3.github.io/WSA-Lunch/wsa-lunch.ics"
