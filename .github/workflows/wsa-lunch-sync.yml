@@ -43,4 +43,4 @@ jobs:
       - name: Show the feed URL
         run: |
           REPO="${GITHUB_REPOSITORY#*/}"
-          echo "Subscribe: https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO}/wsa-lunch.ics"
+          echo "Subscribe: https://mtwa3.github.io/WSA-lunch/wsa-lunch.ics"
