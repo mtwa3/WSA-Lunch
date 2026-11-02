@@ -1,7 +1,7 @@
 # WSA Lower School Lunch → Google Calendar (auto-synced)
 
-Keeps a read-only Google Calendar showing **today + the next 6 days** of Lower
-School lunch. FLIK's menus are re-read once a day by GitHub Actions, which
+Keeps a read-only Google Calendar showing the **whole current month + the whole
+next month** of Lower School lunch. FLIK's menus are re-read once a day by GitHub Actions, which
 commits a calendar file that GitHub Pages serves; Google Calendar subscribes to
 that URL. No manual importing ever again — and because each day keeps one
 permanent event ID, a menu edit **updates the existing entry instead of creating
@@ -10,7 +10,8 @@ a duplicate**.
 | | |
 |---|---|
 | Feed URL | `https://YOU.github.io/REPO/wsa-lunch.ics` |
-| Freshness | rebuilt daily; Google refetches every ~8–24 h (no manual refresh) |
+| Freshness | rebuilt daily; window = current month + next month; Google refetches every ~8–24 h |
+| Unpublished days | shown as “Menu not yet published” (`--include-placeholders`); remove that flag to hide them |
 | Scope | lunch only · Mon–Fri · all-day · **no reminders** |
 | Secrets | none required |
 
@@ -43,11 +44,19 @@ commit" means they did not. Edits show up in Google within about a day.
 ## Tuning the window
 
 ```bash
-python wsa_lunch_sync.py --days 7  --back-days 45          # default: 1 week ahead, 6 weeks of history
-python wsa_lunch_sync.py --days 10 --back-days 0           # 2 weeks ahead, no history
+python wsa_lunch_sync.py --months 2                        # whole current month + next month (what the workflow uses)
+python wsa_lunch_sync.py --days 7  --back-days 45         # rolling: 1 week ahead, 6 weeks of history
+python wsa_lunch_sync.py --days 10 --back-days 0          # 2 weeks ahead, no history
 python wsa_lunch_sync.py --start 2026-11-02 --end 2027-05-26   # whole term (see caveat)
-python wsa_lunch_sync.py --dry-run                         # preview, write nothing
+python wsa_lunch_sync.py --dry-run                        # preview, write nothing
 ```
+
+The GitHub workflow runs `--months 2 --include-placeholders`: everything from the
+1st of this month through the last day of next month. The window is recomputed
+every day, so on the 1st it automatically slides forward to cover the next pair
+of months. Days FLIK has not published yet appear as “Menu not yet published -
+check back closer to the date”; drop `--include-placeholders` from the workflow
+if you'd rather they be absent until real menus exist.
 
 A subscription **replaces** the calendar on every refetch: any day that is not in
 the feed disappears from Google. That is what keeps stale menus from lingering,
