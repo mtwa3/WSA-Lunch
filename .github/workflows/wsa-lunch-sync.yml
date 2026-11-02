@@ -1,0 +1,46 @@
+name: wsa-lunch-sync
+
+on:
+  schedule:
+    - cron: "0 12 * * *"      # 12:00 UTC daily (~07:00 Eastern)
+  workflow_dispatch: {}        # adds a "Run workflow" button
+
+permissions:
+  contents: write              # lets the job commit back into this repo
+
+concurrency:
+  group: wsa-lunch-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Install CA bundle (script auto-detects certifi)
+        run: python -m pip install --quiet --upgrade certifi
+      - name: Build rolling feed (7 days ahead, 45 days history)
+        run: >
+          python wsa_lunch_sync.py --days 7 --back-days 45
+          --state .wsa-state.json --out wsa-lunch.ics
+      - name: Sanity check
+        run: |
+          test "$(grep -c 'BEGIN:VEVENT' wsa-lunch.ics)" -gt 0 || { echo "feed has no events"; exit 1; }
+          head -3 wsa-lunch.ics
+      - name: Commit only when something changed
+        run: |
+          git config user.name  "wsa-lunch-sync"
+          git config user.email "wsa-lunch-sync@users.noreply.github.com"
+          git add wsa-lunch.ics .wsa-state.json
+          if git diff --staged --quiet; then
+            echo "No menu changes - nothing to commit."
+          else
+            git commit -m "menu sync $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
+      - name: Show the feed URL
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"
+          echo "Subscribe: https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO}/wsa-lunch.ics"
