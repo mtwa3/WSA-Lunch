@@ -12,6 +12,7 @@ a duplicate**.
 | Feed URL | `https://YOU.github.io/REPO/wsa-lunch.ics` |
 | Freshness | rebuilt daily; window = current month + next month; Google refetches every ~8–24 h |
 | Unpublished days | shown as “Menu not yet published” (`--include-placeholders`); remove that flag to hide them |
+| Freshness label | every entry ends with “Last checked <date time>” so you can see how recent the data is; set `DISPLAY_TZ` at the top of the script (e.g. `"America/Chicago"`) to show your own timezone |
 | Scope | lunch only · Mon–Fri · all-day · **no reminders** |
 | Secrets | none required |
 
