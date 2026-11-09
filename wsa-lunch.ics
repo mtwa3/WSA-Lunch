@@ -7,13 +7,14 @@ X-WR-CALNAME:WSA Lower School Lunch
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:wsa-lower-school-lunch-2026-11-02@flikisdining.com
-DTSTAMP:20261102T013822Z
-SEQUENCE:1
+DTSTAMP:20261109T221218Z
+SEQUENCE:2
 DTSTART;VALUE=DATE:20261102
 DTEND;VALUE=DATE:20261103
 SUMMARY:Lower School Lunch - Monday
-DESCRIPTION:CHEF'S TABLE\n• Fried Chicken Tenders\n• Baked Potato\n• 
- Glazed Carrots (Sweet Glazed Carrots)\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:CHEF'S TABLE\n• Fried Chicken Tenders\n• Revved Up Mashed P
+ otatoes\n• Glazed Carrots (Sweet Glazed Carrots)\nLast checked 2026-11-0
+ 9 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -26,7 +27,7 @@ DTEND;VALUE=DATE:20261104
 SUMMARY:Lower School Lunch - Tuesday
 DESCRIPTION:CHEF'S TABLE\n• French Toast Sticks\n• Applewood Smoked Bac
  on\n• Creamy Grits\n• Fried Hash Brown Patty\n• Sliced Apples\nLast 
- checked 2026-11-08 17:50 UTC
+ checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -39,7 +40,7 @@ DTEND;VALUE=DATE:20261105
 SUMMARY:Lower School Lunch - Wednesday
 DESCRIPTION:CHEF'S TABLE\n• Cheese Pizza (Cheese Sicilian Pizza on Focacc
  ia bread)\n• Pepperoni Pizza\n• Cheez-It Crackers^\n• Steamed Peas\n
- Last checked 2026-11-08 17:50 UTC
+ Last checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -52,7 +53,7 @@ DTEND;VALUE=DATE:20261106
 SUMMARY:Lower School Lunch - Thursday
 DESCRIPTION:CHEF'S TABLE\n• Beef Taco\, Cheddar\, Soft Tortilla\n• Cumi
  n Grilled Squash\n• Homemade Baked Corn Tortilla Chips (Crispy corn chip
- s)\nDESSERT\n• Homemade Churros\nLast checked 2026-11-08 17:50 UTC
+ s)\nDESSERT\n• Homemade Churros\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -64,19 +65,19 @@ DTSTART;VALUE=DATE:20261106
 DTEND;VALUE=DATE:20261107
 SUMMARY:Lower School Lunch - Friday
 DESCRIPTION:CHEF'S TABLE\n• Cheeseburger\n• French Fries\n• Sauteed G
- reen Beans\, Garlic\, Herbs\nLast checked 2026-11-08 17:50 UTC
+ reen Beans\, Garlic\, Herbs\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:wsa-lower-school-lunch-2026-11-09@flikisdining.com
-DTSTAMP:20261107T174039Z
-SEQUENCE:3
+DTSTAMP:20261109T221218Z
+SEQUENCE:4
 DTSTART;VALUE=DATE:20261109
 DTEND;VALUE=DATE:20261110
 SUMMARY:Lower School Lunch - Monday
-DESCRIPTION:CHEF'S TABLE\n• Chicken Tenders\n• Baked Potato\n• Steame
- d Zucchini\nDESSERT\n• Pumpkin Ice Cream\nLast checked 2026-11-08 17:50 
+DESCRIPTION:CHEF'S TABLE\n• Chicken Nuggets\n• Baked Potato\n• Steame
+ d Zucchini\nDESSERT\n• Pumpkin Ice Cream\nLast checked 2026-11-09 22:12 
  UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
@@ -89,7 +90,7 @@ DTSTART;VALUE=DATE:20261110
 DTEND;VALUE=DATE:20261111
 SUMMARY:Lower School Lunch - Tuesday
 DESCRIPTION:CHEF'S TABLE\n• Buttermilk Waffles\n• Baked Tater Tots\n•
-  Turkey Sausage Patty\n• Cubed Watermelon\nLast checked 2026-11-08 17:50
+  Turkey Sausage Patty\n• Cubed Watermelon\nLast checked 2026-11-09 22:12
   UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
@@ -103,7 +104,7 @@ DTEND;VALUE=DATE:20261112
 SUMMARY:Lower School Lunch - Wednesday
 DESCRIPTION:CHEF'S TABLE\n• Cheese Pizza (Cheese Sicilian Pizza on Focacc
  ia bread)\n• Pepperoni Pizza\n• Steamed Vegetable Medley\n• Hummus\,
-  Pretzels^ (Hummus with Pretzels)\nLast checked 2026-11-08 17:50 UTC
+  Pretzels^ (Hummus with Pretzels)\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -115,7 +116,7 @@ DTSTART;VALUE=DATE:20261112
 DTEND;VALUE=DATE:20261113
 SUMMARY:Lower School Lunch - Thursday
 DESCRIPTION:CHEF'S TABLE\n• Grilled Cheese on Wheat\n• FLIK Chips\n• 
- Revved Up Tomato Soup\n• Steamed Broccoli\nLast checked 2026-11-08 17:50
+ Revved Up Tomato Soup\n• Steamed Broccoli\nLast checked 2026-11-09 22:12
   UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
@@ -129,20 +130,20 @@ DTEND;VALUE=DATE:20261114
 SUMMARY:Lower School Lunch - Friday
 DESCRIPTION:CHEF'S TABLE\n• Hot Dog\, White Bun\n• French Fries\n• Ca
  rrots\, Celery Cup w/ Ranch\nDESSERT\n• Chocolate Brownie Cookie\nLast c
- hecked 2026-11-08 17:50 UTC
+ hecked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:wsa-lower-school-lunch-2026-11-16@flikisdining.com
-DTSTAMP:20261102T021010Z
-SEQUENCE:1
+DTSTAMP:20261109T221218Z
+SEQUENCE:2
 DTSTART;VALUE=DATE:20261116
 DTEND;VALUE=DATE:20261117
 SUMMARY:Lower School Lunch - Monday
-DESCRIPTION:CHEF'S TABLE\n• Chicken Nuggets\n• Revved Up Macaroni & Che
- ese\n• Steamed Broccoli\nDESSERT\n• Chef's Choice Dessert\nLast checke
- d 2026-11-08 17:50 UTC
+DESCRIPTION:CHEF'S TABLE\n• Breaded Chicken Tender\n• Revved Up Macaron
+ i & Cheese\n• Steamed Broccoli\nDESSERT\n• Chef's Choice Dessert\nLast
+  checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -154,8 +155,8 @@ DTSTART;VALUE=DATE:20261117
 DTEND;VALUE=DATE:20261118
 SUMMARY:Lower School Lunch - Tuesday
 DESCRIPTION:CHEF'S TABLE\n• Buttermilk Pancakes\n• Cheddar Cheese Grits
- \n• Turkey Sausage Patty\n• Fresh Fruit Salad\nLast checked 2026-11-08
-  17:50 UTC
+ \n• Turkey Sausage Patty\n• Fresh Fruit Salad\nLast checked 2026-11-09
+  22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -169,7 +170,7 @@ SUMMARY:Lower School Lunch - Wednesday
 DESCRIPTION:CHEF'S TABLE\n• Cheese Pizza (Cheese Sicilian Pizza on Focacc
  ia bread)\n• Pepperoni Pizza\n• Cheddar Goldfish Crackers^ (Cheddar Go
  ldfish Crackers\, .75 oz)\n• Cinnamon Glazed Carrots\nLast checked 2026-
- 11-08 17:50 UTC
+ 11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -182,20 +183,20 @@ DTEND;VALUE=DATE:20261120
 SUMMARY:Lower School Lunch - Thursday
 DESCRIPTION:CHEF'S TABLE\n• Spaghetti w/ Meat Sauce\n• Whole Grain Garl
  ic Bread\n• Cauliflower Mixed Vegetables (Colorful and flavorful side ve
- getable)\nLast checked 2026-11-08 17:50 UTC
+ getable)\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:wsa-lower-school-lunch-2026-11-20@flikisdining.com
-DTSTAMP:20261102T021010Z
-SEQUENCE:1
+DTSTAMP:20261109T221218Z
+SEQUENCE:2
 DTSTART;VALUE=DATE:20261120
 DTEND;VALUE=DATE:20261121
 SUMMARY:Lower School Lunch - Friday
-DESCRIPTION:CHEF'S TABLE\n• Cider Cinnamon Turkey Breast\n• Baked Potat
- o\n• Steamed Green Beans\n• Dinner Roll\n• Cranberry Apple Relish\nD
- ESSERT\n• Pumpkin Pie\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:CHEF'S TABLE\n• Cider Cinnamon Turkey Breast\n• Revved Up M
+ ashed Potatoes\n• Steamed Green Beans\n• Dinner Roll\n• Cranberry Ap
+ ple Relish\nDESSERT\n• Pumpkin Pie\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -206,7 +207,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261123
 DTEND;VALUE=DATE:20261124
 SUMMARY:Lower School Lunch - Monday
-DESCRIPTION:Thanksgiving Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Thanksgiving Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -217,7 +218,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261124
 DTEND;VALUE=DATE:20261125
 SUMMARY:Lower School Lunch - Tuesday
-DESCRIPTION:Thanksgiving Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Thanksgiving Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -228,7 +229,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261125
 DTEND;VALUE=DATE:20261126
 SUMMARY:Lower School Lunch - Wednesday
-DESCRIPTION:Thanksgiving Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Thanksgiving Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -239,7 +240,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261126
 DTEND;VALUE=DATE:20261127
 SUMMARY:Lower School Lunch - Thursday
-DESCRIPTION:Thanksgiving Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Thanksgiving Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -250,20 +251,20 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261127
 DTEND;VALUE=DATE:20261128
 SUMMARY:Lower School Lunch - Friday
-DESCRIPTION:Thanksgiving Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Thanksgiving Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
 BEGIN:VEVENT
 UID:wsa-lower-school-lunch-2026-11-30@flikisdining.com
-DTSTAMP:20261102T021010Z
-SEQUENCE:1
+DTSTAMP:20261109T221218Z
+SEQUENCE:2
 DTSTART;VALUE=DATE:20261130
 DTEND;VALUE=DATE:20261201
 SUMMARY:Lower School Lunch - Monday
-DESCRIPTION:CHEF'S TABLE\n• Cheeseburger\n• Baked Beans\n• Green Bean
- s and Cherry Tomatoes\nDESSERT\n• Frozen Treat (Vanilla Ice Cream Sandwi
- ch\, 3.5 oz)\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:CHEF'S TABLE\n• Pickle Brine Crispy Chicken Sandwich\n• Bak
+ ed Beans\n• Green Beans and Cherry Tomatoes\nDESSERT\n• Frozen Treat (
+ Vanilla Ice Cream Sandwich\, 3.5 oz)\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -274,7 +275,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261201
 DTEND;VALUE=DATE:20261202
 SUMMARY:Lower School Lunch - Tuesday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -285,7 +286,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261202
 DTEND;VALUE=DATE:20261203
 SUMMARY:Lower School Lunch - Wednesday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -296,7 +297,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261203
 DTEND;VALUE=DATE:20261204
 SUMMARY:Lower School Lunch - Thursday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -307,7 +308,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Lower School Lunch - Friday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -318,7 +319,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261207
 DTEND;VALUE=DATE:20261208
 SUMMARY:Lower School Lunch - Monday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -329,7 +330,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261208
 DTEND;VALUE=DATE:20261209
 SUMMARY:Lower School Lunch - Tuesday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -340,7 +341,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261209
 DTEND;VALUE=DATE:20261210
 SUMMARY:Lower School Lunch - Wednesday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -351,7 +352,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261210
 DTEND;VALUE=DATE:20261211
 SUMMARY:Lower School Lunch - Thursday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -362,7 +363,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Lower School Lunch - Friday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -373,7 +374,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261214
 DTEND;VALUE=DATE:20261215
 SUMMARY:Lower School Lunch - Monday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -384,7 +385,7 @@ SEQUENCE:2
 DTSTART;VALUE=DATE:20261215
 DTEND;VALUE=DATE:20261216
 SUMMARY:Lower School Lunch - Tuesday
-DESCRIPTION:Menu not yet published\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Menu not yet published\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -395,7 +396,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261216
 DTEND;VALUE=DATE:20261217
 SUMMARY:Lower School Lunch - Wednesday
-DESCRIPTION:Christmas Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -406,7 +407,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261217
 DTEND;VALUE=DATE:20261218
 SUMMARY:Lower School Lunch - Thursday
-DESCRIPTION:Christmas Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -417,7 +418,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261219
 SUMMARY:Lower School Lunch - Friday
-DESCRIPTION:Christmas Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -428,7 +429,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261221
 DTEND;VALUE=DATE:20261222
 SUMMARY:Lower School Lunch - Monday
-DESCRIPTION:Christmas Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -439,7 +440,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261222
 DTEND;VALUE=DATE:20261223
 SUMMARY:Lower School Lunch - Tuesday
-DESCRIPTION:Christmas Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -450,7 +451,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261223
 DTEND;VALUE=DATE:20261224
 SUMMARY:Lower School Lunch - Wednesday
-DESCRIPTION:Christmas Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -461,7 +462,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261224
 DTEND;VALUE=DATE:20261225
 SUMMARY:Lower School Lunch - Thursday
-DESCRIPTION:Christmas Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -472,7 +473,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261225
 DTEND;VALUE=DATE:20261226
 SUMMARY:Lower School Lunch - Friday
-DESCRIPTION:Christmas Day\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Day\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -483,7 +484,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261228
 DTEND;VALUE=DATE:20261229
 SUMMARY:Lower School Lunch - Monday
-DESCRIPTION:Christmas Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -494,7 +495,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261229
 DTEND;VALUE=DATE:20261230
 SUMMARY:Lower School Lunch - Tuesday
-DESCRIPTION:Christmas Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -505,7 +506,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261230
 DTEND;VALUE=DATE:20261231
 SUMMARY:Lower School Lunch - Wednesday
-DESCRIPTION:Christmas Break\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:Christmas Break\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
@@ -516,7 +517,7 @@ SEQUENCE:1
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:Lower School Lunch - Thursday
-DESCRIPTION:New Years\nLast checked 2026-11-08 17:50 UTC
+DESCRIPTION:New Years\nLast checked 2026-11-09 22:12 UTC
 CATEGORIES:SCHOOL
 STATUS:CONFIRMED
 END:VEVENT
